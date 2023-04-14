@@ -1,4 +1,3 @@
-//your JS code here. If required.
 const nameInput = document.getElementById('name');
 const ageInput = document.getElementById('age');
 const submitBtn = document.getElementById('btn');
