@@ -22,3 +22,36 @@ submitBtn.addEventListener('click', (event) => {
       alert(`Oh sorry ${error.name}. You aren't old enough.`);
     });
 });
+function validateForm() {
+  return new Promise((resolve, reject) => {
+    const ageInput = document.getElementById('age');
+    const nameInput = document.getElementById('name');
+    
+    const age = parseInt(ageInput.value);
+    const name = nameInput.value.trim();
+
+    if (age && name) {
+      if (age >= 18) {
+        setTimeout(() => {
+          resolve(`Welcome, ${name}. You can vote.`);
+        }, 4000);
+      } else {
+        reject(`Oh sorry ${name}. You aren't old enough.`);
+      }
+    } else {
+      reject('Please fill in all the required fields.');
+    }
+  });
+}
+
+document.getElementById('myForm').addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  validateForm()
+    .then((message) => {
+      alert(message);
+    })
+    .catch((error) => {
+      alert(error);
+    });
+});
